@@ -1,0 +1,26 @@
+@startuml
+!define RECTANGLE class
+
+start
+:Login;
+
+fork
+  partition "Admin" {
+    :Role: Admin;
+    :Lihat dan Kelola Data Beasiswa;
+    if (Tambah/ubah/hapus data?) then (yes)
+      :Tambah/ubah/hapus data;
+    endif
+  }
+fork again
+  partition "Mahasiswa" {
+    :Role: Mahasiswa;
+    :Mendaftar Beasiswa;
+    :Melihat Status Beasiswa;
+  }
+end fork
+
+:Quit;
+
+stop
+@enduml

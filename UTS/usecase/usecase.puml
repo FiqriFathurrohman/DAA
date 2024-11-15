@@ -1,0 +1,16 @@
+@startuml
+actor Admin
+actor Mahasiswa
+
+rectangle "Aplikasi Beasiswa" {
+    Admin --> (Mengelola Data Beasiswa)
+    Admin --> (Melihat Data Beasiswa)
+    Admin --> (Menambah, Mengubah, Menghapus Data mahasiswa)
+    Admin --> (Melihat Status Beasiswa)
+    
+    Mahasiswa --> (Mendaftar Beasiswa)
+    Mahasiswa --> (Melihat Status Beasiswa)
+}
+
+(Mendaftar Beasiswa) .down.> (Melihat Status Beasiswa) : <<include>>
+@enduml
