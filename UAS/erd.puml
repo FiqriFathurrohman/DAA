@@ -1,0 +1,42 @@
+@startuml
+
+entity User {
+    + user_id : INT [PK]
+    + nama : VARCHAR
+    + email : VARCHAR
+    + password : VARCHAR
+    + role : ENUM('admin', 'user')
+}
+
+entity Transaksi {
+    + transaksi_id : INT [PK]
+    + user_id : INT [FK]
+    + jumlah_kg : FLOAT
+    + harga_per_kg : FLOAT
+    + total_harga : FLOAT
+    + status_pembayaran : ENUM('pending', 'selesai')
+    + tanggal_transaksi : DATETIME
+}
+
+entity Pembayaran {
+    + pembayaran_id : INT [PK]
+    + transaksi_id : INT [FK]
+    + metode_pembayaran : VARCHAR
+    + status : ENUM('pending', 'berhasil', 'gagal')
+    + tanggal_pembayaran : DATETIME
+}
+
+entity Laporan {
+    + laporan_id : INT [PK]
+    + admin_id : INT [FK]
+    + periode : VARCHAR
+    + total_transaksi : INT
+    + total_kg : FLOAT
+    + total_pendapatan : FLOAT
+}
+
+User ||--o{ Transaksi : "melakukan"
+Transaksi ||--o{ Pembayaran : "memiliki"
+User ||--o{ Laporan : "membuat"
+
+@enduml
