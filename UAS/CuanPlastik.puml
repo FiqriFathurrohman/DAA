@@ -1,0 +1,27 @@
+@startuml
+
+start
+:User Registrasi;
+:User Login;
+if (Login Berhasil?) then (Ya)
+    :User Melihat Dashboard;
+    :User Melihat Data Penjualan;
+    :User Menjual Plastik;
+else (Tidak)
+    :Tampilkan Pesan Kesalahan;
+    stop
+endif
+
+:Admin Login;
+if (Login Berhasil?) then (Ya)
+    :Admin Melihat Data Pengguna;
+    :Admin Melihat Data Transaksi;
+    :Admin Menambah/Mengubah/Menghapus Data;
+else (Tidak)
+    :Tampilkan Pesan Kesalahan;
+    stop
+endif
+
+stop
+
+@enduml
